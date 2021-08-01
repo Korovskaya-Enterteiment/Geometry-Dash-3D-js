@@ -63,7 +63,7 @@ gameController()
 window.focus()
 
 //Music
-let music = new Audio('../assets/music/i_like_cute_girls.mp3')
+let music = new Audio('assets/music/i_like_cute_girls.mp3')
 music.play()
 
 //Fix wrong size of a game when resized
@@ -123,11 +123,16 @@ function gameController() {
   }
 
   scene.children.forEach(object => {
-    if (object == character) return
+    if (object == character || character == camera || object.type == 'PointLight') return
+
     if (
-      object.position.x + object.scale.x <= character.position.x + character.scale.x &&
-      object.position.y + object.scale.y <= character.position.y + character.scale.y
-      ) return
+      object.position.x + object.scale.x / 2 <= character.position.x - character.scale.x / 2 /*&&
+      object.position.z + object.scale.z / 2 <= character.position.z + character.scale.z / 2*/
+    ) {
+      return console.log('in sky')
+    } else {
+      return //console.log('not_on_block')
+    }
   })
 
   requestAnimationFrame(gameController)
