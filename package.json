@@ -1,0 +1,10 @@
+{
+  "name": "Geometry-Dash-3D",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Korovskaya-Enterteiment/Geometry-Dash-3D.git",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.131.1"
+  }
+}
