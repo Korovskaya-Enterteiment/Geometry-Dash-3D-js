@@ -1,9 +1,5 @@
 # Geometry-Dash-3D
 
-![Furret2](assets/images/furret2.gif)
-
-![Furret](assets/images/furret.gif)
-
 ![Picture](assets/images/icon.png)
 Geometry Dash 3D in three.js
 
@@ -24,3 +20,7 @@ Geometry Dash 3D in three.js
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-090909?style=for-the-badge&logo=JavaScript)
 ![THREE.js](https://img.shields.io/badge/-THREE.js-090909?style=for-the-badge&logo=THREE.js)
+
+# Project Guardian
+
+![Furret2](assets/images/furret2.gif)
