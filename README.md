@@ -1,6 +1,9 @@
 # Geometry-Dash-3D
 
+![Furret2](assets/images/furret2.gif)
+
 ![Furret](assets/images/furret.gif)
+
 ![Picture](assets/images/icon.png)
 Geometry Dash 3D in three.js
 
