@@ -1,6 +1,3 @@
-//Imports
-import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.min.js'
-
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 
@@ -11,10 +8,10 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 let game = document.querySelector('.game')
 game.appendChild(renderer.domElement)
 
-//Settings
+// Settings
 let levelLength = 100
 
-//Plane
+// Plane
 const geometryPlane = new THREE.BoxGeometry(1000, 1, 3)
 const materialPlane = new THREE.MeshPhongMaterial({
   color: 0xFFFFFF
@@ -23,7 +20,7 @@ let plane = new THREE.Mesh(geometryPlane, materialPlane)
 plane.position.y = -0.5
 scene.add(plane)
 
-//Character
+// Character
 const geometryBox = new THREE.BoxGeometry(1, 1, 1)
 const materialBox = new THREE.MeshPhongMaterial({
   color: 0xFFFFFF
@@ -37,36 +34,44 @@ character.gravity = 0.001
 
 scene.add(character)
 
-//Light
+// Block
+/*let enemy = new THREE.Mesh(geometryBox, materialBox)
+
+enemy.position.x = 3
+enemy.position.y = 0.5
+
+scene.add(enemy)*/
+
+// Light
 const pointLight = new THREE.PointLight(0x0000FF, 1, 50)
 pointLight.position.set(3, 3, 3)
 scene.add(pointLight)
 
-//Light
+// Light
 const pointLight1 = new THREE.PointLight(0xFF0000, 1, 50)
 pointLight1.position.set(-3, 3, -3)
 scene.add(pointLight1)
 
-//Camera
+// Camera
 camera.rotation.y = 105
 camera.rotation.y = 135
 
 scene.add( camera )
 
-//Progress bar
+// Progress bar
 let progress = 0
 let progressBar = document.getElementById('progressBar')
 
-//Init
+// Init
 render()
 gameController()
 window.focus()
 
-//Music
+// Music
 let music = new Audio('assets/music/i_like_cute_girls.mp3')
 music.play()
 
-//Fix wrong size of a game when resized
+// Fix wrong size of a game when resized
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
@@ -76,9 +81,9 @@ function onWindowResize() {
 
 window.addEventListener('resize', onWindowResize, false)
 
-//Key Controller
+// Key Controller
 function keyDown(data) {
-  if (data.code == 'Space' && character.landed == true) {
+  if ((data.code == 'Space' || data.code == 'Click') && character.landed == true) {
     character.landed = false
     character.y_v += 0.05
   }
@@ -87,58 +92,49 @@ function keyDown(data) {
 window.addEventListener('keydown', keyDown)
 
 function gameController() {
-  //Camera
+  // Camera
   camera.lookAt(character.position)
 
   camera.position.x = character.position.x - 2
   camera.position.y = character.position.y + 2
   camera.position.z = character.position.z + 3  
 
-  character.position.x += 0.01
-
-  //Progress bar
+  // Progress bar
   progress = character.position.x / levelLength * progressBar.max
   progressBar.value = progress
 
-  //characterMoveController
+  // characterMoveController
+  character.position.x += 0.01
+
+  character.landed = false
+
+  scene.children.forEach(object => {
+    if (object == character || object == camera || object.type == 'PointLight') return
+
+    if ( // ! End the engine
+      /*object.position.x - object.scale.x / 2 > character.position.x + character.scale.x / 2 &&
+      object.position.x + object.scale.x / 2 < character.position.x - character.scale.x / 2 &&*/
+      object.position.y + object.scale.y / 2 >= character.position.y - character.scale.y / 2/* &&  
+      object.position.y - object.scale.y / 2 < character.position.y + character.scale.y / 2*/
+    ) {
+      character.landed = true
+      character.rotation.z = 0
+      character.position.y = object.position.y + (object.scale.y + character.scale.y) / 2
+      if (character.y_v <= 0) character.y_v = 0  
+    }
+  })
+
   if (character.landed == false) {
     character.rotation.z -= 0.016
-
     character.y_v -= character.gravity
-  } else {
-    character.rotation.z = 0
-  }
-
-  if (character.position.y + character.y_v <= 0.5) {
-    character.position.y = 0.5
-  } else {
-    character.position.y += character.y_v
   }
 
   character.position.y += character.y_v
 
-  if (character.position.y <= 0.5) {
-    character.y_v = 0
-    character.landed = true
-  }
-
-  scene.children.forEach(object => {
-    if (object == character || character == camera || object.type == 'PointLight') return
-
-    if (
-      object.position.x + object.scale.x / 2 <= character.position.x - character.scale.x / 2 /*&&
-      object.position.z + object.scale.z / 2 <= character.position.z + character.scale.z / 2*/
-    ) {
-      return console.log('in sky')
-    } else {
-      return //console.log('not_on_block')
-    }
-  })
-
   requestAnimationFrame(gameController)
 }
 
-//Render world
+// Render world
 function render() {
   renderer.render(scene, camera)
 
