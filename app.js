@@ -77,11 +77,13 @@ var progressBar = document.getElementById('progressBar')
 // Init
 render()
 setInterval(gameController, 16)
-window.focus()
 
 // Music
-var music = new Audio('assets/music/i_like_cute_girls.mp3')
-music.play()
+window.focus()
+window.addEventListener(
+	'focus',
+	new Audio('assets/music/i_like_cute_girls.mp3').play()
+)
 
 // Fix wrong size of a game when resized
 function onWindowResize() {
