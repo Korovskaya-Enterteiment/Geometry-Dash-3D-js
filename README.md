@@ -1,29 +1,19 @@
 # Geometry-Dash-3D
 
-![Picture](assets/images/icon.png)
+![Icon](assets/icon.png)
 Geometry Dash 3D in three.js
 
-## Demo
-
-![Demo](assets/images/demo.png)
-
 ## Chats
-[![Telegram](https://img.shields.io/badge/-Telegram-000000?style=for-the-badge&logo=Telegram&logoColor=27A0D9)](https://t.me/joinchat/mp4IqfyDpxI2NDIy)
 
-## Created by
+[Telegram](https://t.me/joinchat/mp4IqfyDpxI2NDIy)
+[Discord](https://discord.gg/MygWFdByEk)
 
-[Zamur650](https://Zamur650.github.io/)
+## Install
 
-[Bananchik204](https://Bananchik204.github.io/)
+1. Clone repository with `git clone https://github.com/Korovskaya-Enterteiment/Geometry-Dash-3D.git`
 
-## Used Langugages and Frameworks
+1. Install dependencies with `yarn install`
 
-![JavaScript](https://img.shields.io/badge/-JavaScript-090909?style=for-the-badge&logo=JavaScript)
-![THREE.js](https://img.shields.io/badge/-THREE.js-090909?style=for-the-badge&logo=THREE.js)
+1. Run app localy with `yarn start`
 
-## Game
-[Game](https://korovskaya-enterteiment.github.io/Geometry-Dash-3D/)
-
-# Project Guardian
-
-![Furret2](assets/images/furret2.gif)
+Now you have your game running! 🎉

@@ -1,10 +1,30 @@
 {
-  "name": "Geometry-Dash-3D",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/Korovskaya-Enterteiment/Geometry-Dash-3D.git",
-  "license": "MIT",
-  "dependencies": {
-    "three": "^0.131.1"
-  }
+	"name": "geometry-dash-3d",
+	"version": "1.0.0",
+	"description": "Geometry Dash 3D in three.js",
+	"main": "src/",
+	"scripts": {
+		"start": "npx serve src",
+		"format:write": "npx prettier --write ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Korovskaya-Enterteiment/Geometry-Dash-3D.git"
+	},
+	"author": {
+		"email": "alexiy.rybin@gmail.com",
+		"name": "Alexiy Rybin",
+		"url": "https://rybin.vercel.app/"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Korovskaya-Enterteiment/Geometry-Dash-3D/issues"
+	},
+	"homepage": "https://github.com/Korovskaya-Enterteiment/Geometry-Dash-3D#readme",
+	"dependencies": {
+		"serve": "^13.0.2"
+	},
+	"devDependencies": {
+		"eslint": "^8.4.0"
+	}
 }
