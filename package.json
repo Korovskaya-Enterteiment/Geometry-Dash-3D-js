@@ -5,6 +5,7 @@
 	"main": "src/",
 	"scripts": {
 		"start": "npx serve src",
+		"start:dev": "npx live-server src",
 		"lint:check": "eslint ./",
 		"format:write": "npx prettier --write ."
 	},
