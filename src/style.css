@@ -5,4 +5,10 @@
 
 nav {
 	position: fixed;
+
+	padding-left: 2.5vw;
+}
+
+progress {
+	width: 95vw;
 }
