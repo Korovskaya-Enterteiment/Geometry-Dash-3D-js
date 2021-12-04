@@ -7,7 +7,7 @@
 		"start": "npx serve src",
 		"lint:check": "eslint ./",
 		"format:write": "npx prettier --write .",
-		"deploy": "gh-pages -d src"
+		"deploy": "npx gh-pages -d src"
 	},
 	"repository": {
 		"type": "git",
